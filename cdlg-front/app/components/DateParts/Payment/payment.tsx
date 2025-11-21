@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Styles from "./payment.module.css";
-
+import Cookies from 'js-cookie';
 type PaymentProps = {
   speciality: string;
   doctor: string;
@@ -20,18 +20,27 @@ const Payment = ({ speciality, doctor, doctorId, day, hour, cost, onNext }: Paym
   const router = useRouter();
 
   const handlePayment = async () => {
+    const token = Cookies.get("token");
+
+    if (!token) {
+      alert("Debes iniciar sesión para agendar una cita");
+      router.push("/login");
+      return;
+    }
+    console.log(doctorId);
+    console.log(hour);
     const body = {
-      id_contrato: doctorId,
+      id_contrato: Number(doctorId), // ✅ Convertir a número
       fecha_cita: hour 
     };
 
     console.log("Enviando datos al backend:", body);
-
     try {
       const response = await fetch("http://localhost:5000/citas/agendar", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization":`Bearer ${token}` 
         },
         body: JSON.stringify(body),
       });

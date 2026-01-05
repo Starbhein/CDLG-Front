@@ -102,10 +102,10 @@ const DateProcess = ({ onStepChange }: DateProcessProps) => {
           no_consultorio={doctor.no_consultorio}
           day={day.fecha}
           hour={hour}
-          /* --- AGREGA ESTO --- */
-          onNext={(resultado: any) => {
-            console.log("Proceso finalizado", resultado);
-            // Aquí podrías agregar un router.push('/gracias') si tuvieras el router
+          /* --- CORRECCIÓN FINAL --- */
+          onNext={() => { 
+             // Quitamos "resultado" de los paréntesis
+            console.log("Proceso de pago finalizado");
           }}
         />
       )}

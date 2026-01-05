@@ -66,7 +66,7 @@ export default function RegisterEmployee() {
       if (!token) return;
 
       const res = await fetch(
-        "http://localhost:7000/doctores/especialidades",
+        process.env.NEXT_PUBLIC_API_URL + "/doctores/especialidades",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -93,7 +93,7 @@ export default function RegisterEmployee() {
       if (!token) return;
 
       const res = await fetch(
-        "http://localhost:7000/doctores/horarios",
+        process.env.NEXT_PUBLIC_API_URL + "/doctores/horarios",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -183,7 +183,7 @@ export default function RegisterEmployee() {
     formData.append("file", filePdf);
 
     const res = await fetch(
-      "http://localhost:7000/auth/register-employee",
+      process.env.NEXT_PUBLIC_API_URL + "/auth/register-employee",
       {
         method: "POST",
         headers: {

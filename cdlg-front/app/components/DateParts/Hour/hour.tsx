@@ -47,7 +47,7 @@ const Hour = ({ doctorId, fecha, onNext }: HourProps) => {
         const token = Cookies.get("token");
 
         const res = await fetch(
-          "http://localhost:7000/doctores/disponibilidad/resumen/dias",
+          process.env.NEXT_PUBLIC_API_URL + "/doctores/disponibilidad/resumen/dias",
           {
             method: "POST",
             headers: {

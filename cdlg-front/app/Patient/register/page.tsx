@@ -81,7 +81,7 @@ export default function Register() {
     formData.append("file", filePdf);
 
     const res = await fetch(
-      "http://localhost:7000/auth/register-patient",
+      process.env.NEXT_PUBLIC_API_URL + "/auth/register-patient",
       {
         method: "POST",
         body: formData,

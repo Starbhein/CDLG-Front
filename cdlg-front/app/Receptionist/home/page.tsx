@@ -37,7 +37,7 @@ const Home = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:7000/recepcionista/todos",
+          process.env.NEXT_PUBLIC_API_URL + "/recepcionista/todos",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

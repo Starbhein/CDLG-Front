@@ -45,7 +45,7 @@ const Doctors = ({ specialityId, onNext }: Props) => {
 
       try {
         const res = await fetch(
-          `http://localhost:7000/doctores/especialidades/${specialityId}/doctores`,
+          `process.env.NEXT_PUBLIC_API_URL/doctores/especialidades/${specialityId}/doctores`,
           {
             method: "GET",
             headers: {

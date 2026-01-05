@@ -45,7 +45,7 @@ const Day = ({ idContrato, idEspecialidad, onNext }: DayProps) => {
         const token = Cookies.get("token");
 
         const res = await fetch(
-          "http://localhost:7000/doctores/disponibilidad/resumen",
+          process.env.NEXT_PUBLIC_API_URL + "/doctores/disponibilidad/resumen",
           {
             method: "POST",
             headers: {

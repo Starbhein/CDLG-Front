@@ -44,7 +44,7 @@ const Prescription = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:7000/receta/mostrar-recetas",
+          process.env.NEXT_PUBLIC_API_URL + "/receta/mostrar-recetas",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

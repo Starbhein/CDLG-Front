@@ -25,7 +25,7 @@ const Speciality = ({ onNext }: Props) => {
     }
 
     const res = await fetch(
-      "http://localhost:7000/doctores/especialidades",
+      process.env.NEXT_PUBLIC_API_URL + "/doctores/especialidades",
       {
         method: "GET",
         headers: {

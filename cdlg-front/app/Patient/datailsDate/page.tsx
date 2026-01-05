@@ -56,7 +56,7 @@ const DetailDate = () => {
       }
 
       try {
-        const res = await fetch(`http://localhost:7000/citas/mis-citas/${folio}`, {
+        const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/citas/mis-citas/${folio}`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -114,7 +114,7 @@ const DetailDate = () => {
     }
 
     try {
-      const profileRes = await fetch("http://localhost:7000/auth/profile", {
+      const profileRes = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/profile", {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -129,7 +129,7 @@ const DetailDate = () => {
         numero_seguridad_social,
       };
 
-      const cancelRes = await fetch("http://localhost:7000/citas/cancelar-cita", {
+      const cancelRes = await fetch(process.env.NEXT_PUBLIC_API_URL + "/citas/cancelar-cita", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(cancelBody),
@@ -163,7 +163,7 @@ const DetailDate = () => {
         pago: Number(cita.costo),
       };
 
-      const res = await fetch("http://localhost:7000/pay/pay-quote", {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/pay/pay-quote", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(payBody),

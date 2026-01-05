@@ -69,7 +69,7 @@ const Home = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:7000/citas/mis-citas",
+          process.env.NEXT_PUBLIC_API_URL + "/citas/mis-citas",
           {
             method: "GET",
             headers: {

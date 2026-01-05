@@ -54,7 +54,7 @@ const Patients = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:7000/paciente/todos",
+          process.env.NEXT_PUBLIC_API_URL + "/paciente/todos",
           {
             method: "GET",
             headers: {

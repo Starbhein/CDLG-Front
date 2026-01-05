@@ -82,7 +82,7 @@ const Payment = ({
 
     try {
       const response = await fetch(
-        "http://localhost:7000/citas/agendar-cita",
+        process.env.NEXT_PUBLIC_API_URL + "/citas/agendar-cita",
         {
           method: "POST",
           headers: {

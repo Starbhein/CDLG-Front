@@ -54,7 +54,7 @@ const HomeDoctor = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:7000/citas/mis-citas/doctor",
+          process.env.NEXT_PUBLIC_API_URL + "/citas/mis-citas/doctor",
           {
             headers: {
               Authorization: `Bearer ${token}`,

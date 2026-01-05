@@ -96,7 +96,7 @@ const DetailsDate = () => {
 
       try {
         const res = await fetch(
-          `http://localhost:7000/citas/mis-citas/${folio}`,
+          `process.env.NEXT_PUBLIC_API_URL/citas/mis-citas/${folio}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -157,7 +157,7 @@ const DetailsDate = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:7000/receta/crear-receta", {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/receta/crear-receta", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -199,7 +199,7 @@ const verHistorialClinico = async () => {
     setLoadingHistorial(true);
     setErrorHistorial(null);
 
-    const res = await fetch("http://localhost:7000/citas/historial-clinico", {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/citas/historial-clinico", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

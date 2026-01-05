@@ -1,0 +1,66 @@
+/* [project]/app/Doctor/homeDoctor/homeDoctor.module.css [app-client] (css) */
+.homeDoctor-module__4Kw8Eq__container {
+  text-align: center;
+  box-sizing: border-box;
+  height: calc(100vh - 140px);
+  margin-top: 70px;
+  padding: 20px;
+}
+
+.homeDoctor-module__4Kw8Eq__homeContainer {
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: calc(100vh - 190px);
+  margin-top: 30px;
+  display: flex;
+}
+
+.homeDoctor-module__4Kw8Eq__titleContainer {
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.homeDoctor-module__4Kw8Eq__title {
+  margin-left: 10px;
+  font-size: 32px;
+}
+
+.homeDoctor-module__4Kw8Eq__tableContainer {
+  background-color: #383838;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+}
+
+.homeDoctor-module__4Kw8Eq__tableContainer table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.homeDoctor-module__4Kw8Eq__tableContainer th, .homeDoctor-module__4Kw8Eq__tableContainer td {
+  color: #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  padding: 8px 12px;
+}
+
+.homeDoctor-module__4Kw8Eq__tableContainer td {
+  vertical-align: middle;
+}
+
+.homeDoctor-module__4Kw8Eq__tableContainer td p {
+  vertical-align: middle;
+  margin: 0 0 0 8px;
+  display: inline-block;
+}
+
+.homeDoctor-module__4Kw8Eq__tableContainer td > :first-child {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=app_Doctor_homeDoctor_homeDoctor_module_css_bad6b30c._.single.css.map*/

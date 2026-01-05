@@ -1,0 +1,279 @@
+/* [project]/app/components/Form/form.module.css [app-client] (css) */
+.form-module__RMMprq__container {
+  background-color: #383838;
+  width: 80%;
+  padding: 16px;
+  position: relative;
+}
+
+.form-module__RMMprq__container:before {
+  content: "";
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle at 100% 0, #0000 0 30px, #000 30px), radial-gradient(circle at 0 100%, #0000 0 30px, #000 30px);
+  mask-image: radial-gradient(circle at 100% 0, #0000 0 30px, #000 30px), radial-gradient(circle at 0 100%, #0000 0 30px, #000 30px);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-image: radial-gradient(circle at top right, transparent 0 30px black 30px), radial-gradient(circle at bottom left, transparent 0 30px, black 30px);
+  -webkit-mask-composite: source-in;
+  border: 2px solid #d0d0d0;
+  position: absolute;
+  inset: 0;
+}
+
+.form-module__RMMprq__secondContainer {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65vh;
+  padding: 2em 4em;
+  display: flex;
+  position: relative;
+}
+
+.form-module__RMMprq__secondContainer:before {
+  content: "";
+  pointer-events: none;
+  -webkit-mask-composite: source-in;
+  border: 2px solid #d0d0d0;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: radial-gradient(circle at 100% 0, #0000 0 36px, #000 36px), radial-gradient(circle at 0 100%, #0000 0 36px, #000 36px);
+  mask-image: radial-gradient(circle at 100% 0, #0000 0 36px, #000 36px), radial-gradient(circle at 0 100%, #0000 0 36px, #000 36px);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.form-module__RMMprq__buttonContainer {
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1.5em;
+  display: flex;
+}
+
+.form-module__RMMprq__inputContainer {
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 1em;
+  display: flex;
+}
+
+/* [project]/app/components/IconButton/iconButton.module.css [app-client] (css) */
+:root {
+  --cut: 30px;
+  --cut-bottom: 15px;
+  --a: 15px;
+  --th: 2px;
+}
+
+.iconButton-module__5ZrrwW__button {
+  all: unset;
+  cursor: pointer;
+  background: none;
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.iconButton-module__5ZrrwW__container {
+  box-sizing: border-box;
+  width: fit-content;
+  min-width: 200px;
+  height: 70px;
+  clip-path: polygon(var(--cut) 0%, 100% 0%, 100% calc(100% - var(--cut-bottom)), calc(100% - var(--cut-bottom)) 100%, 0% 100%, 0% var(--cut));
+  border: var(--th) solid #d0d0d0;
+  background: linear-gradient(to right, #c8c8c84d 50%, #0000 50%) 100% 100% / 200% 100%;
+  align-items: center;
+  gap: 1em;
+  padding: .5em 1em;
+  transition: background-position .3s;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.iconButton-module__5ZrrwW__button:hover .iconButton-module__5ZrrwW__container {
+  background-position: 0 100%;
+}
+
+.iconButton-module__5ZrrwW__diagonalTop {
+  transform-origin: center;
+  border: solid #d0d0d0;
+  border-width: var(--th) 0 0 0;
+  pointer-events: none;
+  z-index: 20;
+  background: none;
+  width: 41.24px;
+  height: 41.24px;
+  position: absolute;
+  top: 8.9px;
+  left: 8.9px;
+  transform: rotate(-45deg);
+}
+
+.iconButton-module__5ZrrwW__diagonalBottom {
+  transform-origin: center;
+  border: solid #d0d0d0;
+  border-width: 0 0 var(--th) 0;
+  pointer-events: none;
+  z-index: 20;
+  background: none;
+  width: 21.21px;
+  height: 21.21px;
+  position: absolute;
+  bottom: 2.3px;
+  right: 2.3px;
+  transform: rotate(-45deg);
+}
+
+.iconButton-module__5ZrrwW__diagonalFake {
+  transform-origin: center;
+  border: solid #d0d0d0;
+  border-width: var(--th) 0 0 0;
+  pointer-events: none;
+  z-index: 20;
+  background: none;
+  width: 37px;
+  height: 37px;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  transform: rotate(-45deg);
+}
+
+.iconButton-module__5ZrrwW__text {
+  color: #fff;
+  z-index: 10;
+  margin-left: 1.2em;
+  margin-right: .5em;
+  font-size: 1em;
+}
+
+.iconButton-module__5ZrrwW__diamond {
+  border: var(--th) solid #d0d0d0;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  margin-left: auto;
+  display: flex;
+  transform: rotate(45deg);
+}
+
+.iconButton-module__5ZrrwW__diamond > * {
+  color: #fff;
+  transform: rotate(-45deg);
+}
+
+/* [project]/app/components/TextInput/textInput.module.css [app-client] (css) */
+:root {
+  --border-color: #d0d0d0;
+  --th: 2px;
+}
+
+.textInput-module__uWnwIa__container {
+  align-items: center;
+  height: 70px;
+  padding: .5em 1em;
+  display: flex;
+}
+
+.textInput-module__uWnwIa__circleOuter, .textInput-module__uWnwIa__circleMiddle, .textInput-module__uWnwIa__circleInner {
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.textInput-module__uWnwIa__circleOuter {
+  border: var(--th) solid transparent;
+  border-top-color: var(--border-color);
+  border-right-color: var(--border-color);
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  margin-right: -24px;
+  transform: rotate(25deg);
+}
+
+.textInput-module__uWnwIa__circleMiddle {
+  border: var(--th) solid transparent;
+  border-bottom-color: var(--border-color);
+  border-left-color: var(--border-color);
+  width: 43px;
+  height: 43px;
+}
+
+.textInput-module__uWnwIa__circleInner {
+  border: var(--th) solid transparent;
+  border-bottom-color: var(--border-color);
+  border-left-color: var(--border-color);
+  width: 36px;
+  height: 36px;
+}
+
+.textInput-module__uWnwIa__input {
+  border: var(--th) solid var(--border-color);
+  color: #fff;
+  clip-path: polygon(12px 0%, 100% 0%, 100% 100%, 12px 100%);
+  background: none;
+  border-left: none;
+  border-radius: 10px;
+  outline: none;
+  flex: 1;
+  padding: .6em 1em .6em 2em;
+  font-size: 1em;
+  transition: border-color .3s, box-shadow .3s;
+  position: relative;
+  left: -4px;
+}
+
+.textInput-module__uWnwIa__input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 8px #ffffff4d;
+}
+
+.textInput-module__uWnwIa__input::placeholder {
+  color: var(--border-color);
+}
+
+/* [project]/app/Patient/login/login.module.css [app-client] (css) */
+.login-module__zMSSRG__container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.login-module__zMSSRG__left {
+  color: #fff;
+  box-sizing: border-box;
+  background-color: #383838;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  padding: 2em;
+  display: flex;
+}
+
+.login-module__zMSSRG__right {
+  box-sizing: border-box;
+  background-color: #9a9a97;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 2em;
+  display: flex;
+}
+
+.login-module__zMSSRG__right input {
+  flex-shrink: 0;
+  width: 80%;
+  min-width: 280px;
+}
+
+/*# sourceMappingURL=app_1f16c4ab._.css.map*/

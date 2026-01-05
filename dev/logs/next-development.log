@@ -1,0 +1,5 @@
+[00:00:00.621] Server  LOG      ✓ Ready in 450ms
+[00:00:02.481] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.392] Browser WARN    Image with src "http://localhost:3000/icon.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:03.392] Browser WARN    Image with src "http://localhost:3000/NavBarShowMenu.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:03.392] Browser LOG     Empleados obtenidos: [{"no_empleado":{"apellido_materno":"Irapuato","apellido_paterno":"Bodoque","correo":"example2@gmail.com","estatus":"A","fecha_contratacion":"2022-12-11T06:00:00.000Z","id_empleado":"239501000053","nom_empleado":"Carlos"},"salario":1000}]

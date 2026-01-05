@@ -1,0 +1,18 @@
+/* [project]/app/components/NavMenu/navMenu.module.css [app-client] (css) */
+.navMenu-module__B-eiVq__container {
+  z-index: 5000;
+  background-color: #000;
+  border-radius: 0 0 0 12px;
+  flex-direction: column;
+  gap: 15px;
+  width: max-content;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  position: fixed;
+  top: 70px;
+  right: 0;
+  box-shadow: 0 0 15px #0006;
+}
+
+/*# sourceMappingURL=app_components_NavMenu_navMenu_module_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,75 @@
+/* [project]/app/components/TextInput/textInput.module.css [app-client] (css) */
+:root {
+  --border-color: #d0d0d0;
+  --th: 2px;
+}
+
+.textInput-module__uWnwIa__container {
+  align-items: center;
+  height: 70px;
+  padding: .5em 1em;
+  display: flex;
+}
+
+.textInput-module__uWnwIa__circleOuter, .textInput-module__uWnwIa__circleMiddle, .textInput-module__uWnwIa__circleInner {
+  border-radius: 50%;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.textInput-module__uWnwIa__circleOuter {
+  border: var(--th) solid transparent;
+  border-top-color: var(--border-color);
+  border-right-color: var(--border-color);
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  margin-right: -24px;
+  transform: rotate(25deg);
+}
+
+.textInput-module__uWnwIa__circleMiddle {
+  border: var(--th) solid transparent;
+  border-bottom-color: var(--border-color);
+  border-left-color: var(--border-color);
+  width: 43px;
+  height: 43px;
+}
+
+.textInput-module__uWnwIa__circleInner {
+  border: var(--th) solid transparent;
+  border-bottom-color: var(--border-color);
+  border-left-color: var(--border-color);
+  width: 36px;
+  height: 36px;
+}
+
+.textInput-module__uWnwIa__input {
+  border: var(--th) solid var(--border-color);
+  color: #fff;
+  clip-path: polygon(12px 0%, 100% 0%, 100% 100%, 12px 100%);
+  background: none;
+  border-left: none;
+  border-radius: 10px;
+  outline: none;
+  flex: 1;
+  padding: .6em 1em .6em 2em;
+  font-size: 1em;
+  transition: border-color .3s, box-shadow .3s;
+  position: relative;
+  left: -4px;
+}
+
+.textInput-module__uWnwIa__input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 8px #ffffff4d;
+}
+
+.textInput-module__uWnwIa__input::placeholder {
+  color: var(--border-color);
+}
+
+/*# sourceMappingURL=app_components_TextInput_textInput_module_css_bad6b30c._.single.css.map*/

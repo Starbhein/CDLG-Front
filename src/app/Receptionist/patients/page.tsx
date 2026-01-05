@@ -2,12 +2,11 @@
 
 import NavBar from "@/app/components/NavBar/navBar";
 import styles from "./patients.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react"; // 1. Importamos Suspense
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-
 
 /* =========================
    TIPOS (SEGÚN JSON REAL)
@@ -30,10 +29,10 @@ interface Paciente {
 }
 
 /* =========================
-   COMPONENTE
+   COMPONENTE DE CONTENIDO (Lógica Original)
 ========================= */
 
-const Patients = () => {
+const PatientsContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const nss = searchParams.get("nss"); // ⚡ Esto es el NSS del paciente
@@ -43,7 +42,7 @@ const Patients = () => {
   const [error, setError] = useState<string | null>(null);
 
   /* =========================
-     FETCH paciente/todos
+      FETCH paciente/todos
   ========================= */
 
   useEffect(() => {
@@ -94,7 +93,7 @@ const Patients = () => {
   };
 
   /* =========================
-     RENDER
+      RENDER INTERNO
   ========================= */
 
   if (loading) {
@@ -121,7 +120,7 @@ const Patients = () => {
 
   return (
     <>
-      <NavBar opaque role="receptionist"/>
+      <NavBar opaque role="receptionist" />
 
       <div className={styles.container}>
         <div className={styles.titleContainer}>
@@ -158,12 +157,9 @@ const Patients = () => {
                 </tr>
               ) : (
                 pacientes.map((paciente) => (
-                  <tr
-                    key={paciente.numero_seguridad_social}
-                  >
+                  <tr key={paciente.numero_seguridad_social}>
                     <td>
-                      {paciente.nombres}{" "}
-                      {paciente.apellido_paterno}{" "}
+                      {paciente.nombres} {paciente.apellido_paterno}{" "}
                       {paciente.apellido_materno}
                     </td>
                     <td>{paciente.sexo}</td>
@@ -177,7 +173,9 @@ const Patients = () => {
                         className={styles.detailButton}
                         onClick={() => {
                           console.log("AGENDAR CITA PARA:", paciente);
-                          router.push(`/Receptionist/dates?nss=${paciente.numero_seguridad_social}`)
+                          router.push(
+                            `/Receptionist/dates?nss=${paciente.numero_seguridad_social}`
+                          );
                         }}
                       >
                         Agendar cita
@@ -191,6 +189,18 @@ const Patients = () => {
         </div>
       </div>
     </>
+  );
+};
+
+/* =========================
+   COMPONENTE PRINCIPAL (Wrapper con Suspense)
+========================= */
+const Patients = () => {
+  return (
+    // 2. Envolvemos el componente contenido en Suspense
+    <Suspense fallback={<div>Cargando lista de pacientes...</div>}>
+      <PatientsContent />
+    </Suspense>
   );
 };
 

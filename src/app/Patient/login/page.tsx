@@ -49,7 +49,7 @@ export default function Login() {
       const decodedToken = jwtDecode(data.token);
       console.log("TOKEN DECODIFICADO:", decodedToken);
 
-      const tipoUsuario = decodedToken.tipo_usuario;
+      const tipoUsuario = (decodedToken as any).tipo_usuario;
       console.log("TIPO DE USUARIO:", tipoUsuario);
       console.log("Id", decodedToken.sub)
 

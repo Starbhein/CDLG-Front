@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react"; // 1. Importamos Suspense
 import { useSearchParams, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import NavBar from "@/app/components/NavBar/navBar";
@@ -29,7 +29,10 @@ interface Cita {
   puede_cancelar: boolean;
 }
 
-const DetailDate = () => {
+/* =======================
+   COMPONENTE DE CONTENIDO (Lógica Original)
+======================= */
+const DetailDateContent = () => {
   const searchParams = useSearchParams();
   const folio = searchParams.get("folio");
   const router = useRouter();
@@ -56,10 +59,13 @@ const DetailDate = () => {
       }
 
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/citas/mis-citas/${folio}`, {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/citas/mis-citas/${folio}`,
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (!res.ok) {
           const text = await res.text();
@@ -114,26 +120,38 @@ const DetailDate = () => {
     }
 
     try {
-      const profileRes = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/profile", {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const profileRes = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + "/auth/profile",
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (!profileRes.ok) throw new Error(await profileRes.text());
       const profileData = await profileRes.json();
-      const numero_seguridad_social = Number(profileData[0]?.numero_seguridad_social);
-      if (!numero_seguridad_social) throw new Error("No se pudo obtener NSS del paciente");
+      const numero_seguridad_social = Number(
+        profileData[0]?.numero_seguridad_social
+      );
+      if (!numero_seguridad_social)
+        throw new Error("No se pudo obtener NSS del paciente");
 
       const cancelBody = {
         folio_cita: Number(cita.folio_cita),
         numero_seguridad_social,
       };
 
-      const cancelRes = await fetch(process.env.NEXT_PUBLIC_API_URL + "/citas/cancelar-cita", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify(cancelBody),
-      });
+      const cancelRes = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + "/citas/cancelar-cita",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(cancelBody),
+        }
+      );
 
       if (!cancelRes.ok) throw new Error(await cancelRes.text());
 
@@ -163,11 +181,17 @@ const DetailDate = () => {
         pago: Number(cita.costo),
       };
 
-      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/pay/pay-quote", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify(payBody),
-      });
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + "/pay/pay-quote",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payBody),
+        }
+      );
 
       if (!res.ok) throw new Error(await res.text());
       alert("Pago realizado exitosamente");
@@ -257,6 +281,18 @@ const DetailDate = () => {
         )}
       </div>
     </>
+  );
+};
+
+/* =======================
+   COMPONENTE PRINCIPAL (Wrapper con Suspense)
+======================= */
+const DetailDate = () => {
+  return (
+    // 2. Envolvemos el componente que usa useSearchParams
+    <Suspense fallback={<div>Cargando detalles de la cita...</div>}>
+      <DetailDateContent />
+    </Suspense>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ImageButton from "../../../../components/ImageButton/imageButton";
+import ImageButton from "../../ImageButton/imageButton";
 import styles from "./doctors.module.css";
 import Cookies from "js-cookie";
 
@@ -45,7 +45,7 @@ const Doctors = ({ specialityId, onNext }: Props) => {
 
       try {
         const res = await fetch(
-          `process.env.NEXT_PUBLIC_API_URL/doctores/especialidades/${specialityId}/doctores`,
+          `${process.env.NEXT_PUBLIC_API_URL}/doctores/especialidades/${specialityId}/doctores`,
           {
             method: "GET",
             headers: {

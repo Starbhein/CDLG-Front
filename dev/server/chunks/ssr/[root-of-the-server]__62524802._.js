@@ -437,7 +437,7 @@ const DetailsDate = ()=>{
                 return;
             }
             try {
-                const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/citas/mis-citas/${folio}`, {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/citas/mis-citas/${folio}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

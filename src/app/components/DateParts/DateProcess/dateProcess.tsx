@@ -7,6 +7,11 @@ import Day from "../Day/day";
 import Hour from "../Hour/hour";
 import Payment from "../Payment/payment";
 
+// 1. Definimos qué tipos de datos puede recibir este componente
+interface DateProcessProps {
+  onStepChange?: (step: number) => void;
+}
+
 interface SelectedSpeciality {
   id: number;
   name: string;
@@ -20,13 +25,21 @@ interface SelectedDoctor {
   no_consultorio: number;
 }
 
-const DateProcess = () => {
+// 2. Agregamos las props a la función (destructuring)
+const DateProcess = ({ onStepChange }: DateProcessProps) => {
   const [step, setStep] = useState(0);
 
   const [speciality, setSpeciality] = useState<SelectedSpeciality | null>(null);
   const [doctor, setDoctor] = useState<SelectedDoctor | null>(null);
   const [day, setDay] = useState<{ fecha: string; total_horas: number } | null>(null);
   const [hour, setHour] = useState<string | null>(null);
+
+  // 3. Sincronizamos el paso local con el padre cada vez que cambie 'step'
+  useEffect(() => {
+    if (onStepChange) {
+      onStepChange(step);
+    }
+  }, [step, onStepChange]);
 
   const nextStep = () => setStep((prev) => prev + 1);
 
@@ -81,19 +94,19 @@ const DateProcess = () => {
 
       {/* ===== PASO 4: PAGO ===== */}
       {step === 4 && speciality && doctor && day && hour && (
-              <Payment
-        speciality={speciality.name}
-        cost={speciality.cost}
-        doctor={doctor.nombre}
-        doctorId={doctor.id_contrato}
-        no_consultorio={doctor.no_consultorio} // ⚠ aquí es distinto al prop Payment
-        day={day.fecha}
-        hour={hour}
-      />
-
+        <Payment
+          speciality={speciality.name}
+          cost={speciality.cost}
+          doctor={doctor.nombre}
+          doctorId={doctor.id_contrato}
+          no_consultorio={doctor.no_consultorio}
+          day={day.fecha}
+          hour={hour}
+        />
       )}
     </div>
   );
 };
 
+// 4. CORRECCIÓN IMPORTANTE: Quitamos los paréntesis aquí
 export default DateProcess;

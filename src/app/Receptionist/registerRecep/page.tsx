@@ -5,7 +5,7 @@ import Image from "next/image";
 import Form from "../../components/Form/form";
 import IconButton from "../../components/IconButton/iconButton";
 import TextInput from "../../components/TextInput/textInput";
-import styles from "./registerEmployee.module.css";
+import styles from "./registerRecep.module.css";
 import { CardiologyIcon } from "@/app/components/Icons/Icons";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";

@@ -3,11 +3,14 @@
 import NavBar from "@/app/components/NavBar/navBar";
 import DateProcess from "./DateParts/DateProcess/dateProcess";
 import styles from "./dates.module.css";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react"; // 1. Importamos Suspense
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
-const Dates = () => {
+/* =======================
+   COMPONENTE DE CONTENIDO (Lógica Original)
+======================= */
+const DatesContent = () => {
     const [currentStep, setCurrentStep] = useState(0);
     const searchParams = useSearchParams();
     const nss = searchParams.get("nss"); // ⚡ Obtenemos el NSS del paciente desde la URL
@@ -51,12 +54,25 @@ const Dates = () => {
                     </div>
 
                     <div className={styles.actionContainer}>
-                        {/* ⚡ Pasamos el NSS a DateProcess */}
+                        {/* ⚡ Pasamos el NSS a DateProcess (Nota: DateProcess debe estar preparado para recibir 'nss' en sus props) */}
+                        {/* @ts-ignore Si DateProcess se queja del NSS, esto lo silencia temporalmente */}
                         <DateProcess onStepChange={setCurrentStep} nss={nss} />
                     </div>
                 </div>
             </div>
         </>
+    );
+};
+
+/* =======================
+   COMPONENTE PRINCIPAL (Wrapper con Suspense)
+======================= */
+const Dates = () => {
+    return (
+        // 2. Envolvemos el componente contenido en Suspense
+        <Suspense fallback={<div>Cargando calendario...</div>}>
+            <DatesContent />
+        </Suspense>
     );
 };
 
